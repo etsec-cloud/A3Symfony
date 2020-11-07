@@ -3,10 +3,13 @@
 namespace App\Entity;
 
 use App\Repository\JoueurRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=JoueurRepository::class)
+ * @UniqueEntity("pseudo")
  */
 class Joueur
 {
@@ -19,6 +22,7 @@ class Joueur
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $pseudo;
 
@@ -36,6 +40,15 @@ class Joueur
      * @ORM\ManyToOne(targetEntity=Equipe::class, inversedBy="joueurs")
      */
     private $equipe;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $slug;
+
+    public function __construct(){
+        $this->dateCreation = new \DateTime();
+    }
 
     public function getId(): ?int
     {
@@ -86,6 +99,18 @@ class Joueur
     public function setEquipe(?Equipe $equipe): self
     {
         $this->equipe = $equipe;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }

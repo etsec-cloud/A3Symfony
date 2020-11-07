@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Joueur{% endblock %}
+
+{% block body %}
+
+{{joueur.pseudo}} | {{joueur.type}} <br>
+{{form(modifier)}}
+
+{% endblock %}
