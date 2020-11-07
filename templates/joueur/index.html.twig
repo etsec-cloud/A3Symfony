@@ -4,7 +4,7 @@
 
 {% block body %}
 {% for joueur in joueurs %}
-<a href="{{path('show',{'slug': joueur.slug}) }}"> {{joueur.pseudo}} </a> <br>
+<a href="{{path('show',{'slug': joueur.slug}) }}"> {{joueur.pseudo}} </a> | <a href="{{path('delete_joueur',{'slug': joueur.slug}) }}"> Supprimer </a> <br>
 {% endfor %}
     {{form(ajout)}}
 {% endblock %}

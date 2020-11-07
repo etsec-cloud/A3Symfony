@@ -4,25 +4,28 @@ namespace App\Controller;
 
 use App\Entity\Equipe;
 use App\Form\EquipeType;
+use App\Service\GeneSlug;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\AsciiSlugger;
-
+/**
+     * @Route("/equipe")
+     */
 class EquipeController extends AbstractController
 {
     /**
-     * @Route("/equipe", name="equipe")
+     * @Route("/", name="equipe")
      */
-    public function index(Request $request): Response
+    public function index(Request $request, GeneSlug $geneSlug): Response
     {
         $em = $this->getDoctrine()->getManager();
         $equipe = new Equipe;
         $form = $this->createForm(EquipeType::class, $equipe);
         $form->handleRequest($request);
         if($form->isSubmitted()&& $form->isValid()){
-            $slug = $this->generateUniqueSlug($equipe->getNom());
+            $slug = $geneSlug->generateUniqueSlug($equipe->getNom(), 'Equipe');
             $equipe->setSlug($slug);
             $em->persist($equipe);
             $em->flush();
@@ -50,7 +53,7 @@ class EquipeController extends AbstractController
         return $slug;
     }
     /**
-     * @Route("/equipe/{slug}", name="equipeShow")
+     * @Route("/{slug}", name="equipeShow")
      */
     public function equipeShow(Equipe $equipe= null, Request $request)
     {
@@ -79,4 +82,20 @@ class EquipeController extends AbstractController
             'modif' => $form->createView()
         ]);
     }
+    /** 
+    * @Route("/delete/{slug}", name="delete_equipe")
+    */
+   public function delete(Equipe $equipe = null){
+       if($equipe == null){
+           $this->addFlash('erreur', 'Equipe introuvable');
+           return $this->redirectToRoute('equipe');
+       }
+
+       $em = $this->getDoctrine()->getManager();
+       $em->remove($equipe);
+       $em->flush();
+
+       $this->addFlash('success', 'Equipe supprimé');
+       return $this->redirectToRoute('equipe');
+   }
 }

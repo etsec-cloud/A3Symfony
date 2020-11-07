@@ -4,7 +4,9 @@
 
 {% block body %}
 {% for equipe in equipes %}
-<a href="{{path('equipeShow',{'slug': equipe.slug}) }}"> {{equipe.nom}} </a> <br>
+<a href="{{path('equipeShow',{'slug': equipe.slug}) }}"> {{equipe.nom}} </a> | <a href="{{path('delete_equipe',{'slug': equipe.slug}) }}"> Supprimer </a>  <br>
+
+
 {% endfor %}
     {{form(ajout)}}
 {% endblock %}

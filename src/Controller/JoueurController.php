@@ -4,27 +4,29 @@ namespace App\Controller;
 
 use App\Entity\Joueur;
 use App\Form\JoueurType;
-use DateTime;
+use App\Service\GeneSlug;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\AsciiSlugger;
-
+ /**
+ * @Route("/joueur")
+ */
 class JoueurController extends AbstractController
 {
     /**
-     * @Route("/joueur", name="joueur")
+     * @Route("/", name="joueur")
      */
-    public function index(Request $request): Response
+    public function index(Request $request, GeneSlug $geneSlug): Response
     {
         $em = $this->getDoctrine()->getManager();
         $joueur = new Joueur;
         $form = $this->createForm(JoueurType::class, $joueur);
         $form->handleRequest($request);
         if($form->isSubmitted()&& $form->isValid()){
-            $slug = $this->generateUniqueSlug($joueur->getPseudo());
+            $slug = $geneSlug->generateUniqueSlug($joueur->getPseudo(), 'Joueur');
             $joueur->setSlug($slug);
             $em->persist($joueur);
             $em->flush();
@@ -40,19 +42,9 @@ class JoueurController extends AbstractController
         ]);
     }
 
-    public function generateUniqueSlug($pseudo)
-    {
-        $slugger = new AsciiSlugger();
-        $slug = $slugger -> slug($pseudo);
-        $em = $this->getDoctrine()->getManager();
-        $verification = $em ->getRepository(Joueur::class)->findOneBySlug($slug);
-        if($verification != null){
-            $slug .='-'.uniqid();
-        }
-        return $slug;
-    }
+    
     /**
-     * @Route("/joueur/{slug}", name="show")
+     * @Route("/{slug}", name="show")
      */
     public function show(Joueur $joueur= null, Request $request)
     {
@@ -81,4 +73,20 @@ class JoueurController extends AbstractController
             'modifier' => $form->createView()
         ]);
     }
+    /** 
+    * @Route("/delete/{slug}", name="delete_joueur")
+    */
+   public function delete(Joueur $joueur = null){
+    if($joueur == null){
+        $this->addFlash('erreur', 'Joueur introuvable');
+        return $this->redirectToRoute('joueur');
+    }
+
+    $em = $this->getDoctrine()->getManager();
+    $em->remove($joueur);
+    $em->flush();
+
+    $this->addFlash('success', 'Joueur supprimé');
+    return $this->redirectToRoute('joueur');
+}
 }
