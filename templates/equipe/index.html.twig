@@ -12,8 +12,18 @@
     
 
 
+<<<<<<< HEAD
     {% endfor %}
         {{form(ajout)}}
 </div>
 
+=======
+{% endfor %}
+    {{form_start(ajout)}}
+    <div class="border-solid">
+        {{form_row(ajout.nom)}}
+    </div>
+    {{form_end(ajout)}}
+    
+>>>>>>> 768575775227e153f6d2d80a5939fd26f2c3aa04
 {% endblock %}
