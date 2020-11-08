@@ -1,19 +1,29 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Hello TournoisController!{% endblock %}
-
 {% block body %}
     {% for tournoi in tournois %}
-    <a href="{{path('tournoiShow',{'slug': tournoi.slug}) }}">{{tournoi.nom}} </a>
-    {{tournoi.description}}
-    {{tournoi.jeu}}
-    {{tournoi.date|date("m/d/Y")}}
-    {{tournoi.dateFin | date("m/d/Y")}}
-    {{tournoi.cashPrice}}
-    {{tournoi.ageMin}}
-    <br>
+    <div class="bg-gray-300 flex-coln">
+        <a href="{{path('tournoiShow',{'slug': tournoi.slug}) }}">Nom :{{tournoi.nom}} </a>
+        <p>Description : {{tournoi.description}}</p>
+        <p>Jeu : {{tournoi.jeu}}</p>
+        <p>Date de début : {{tournoi.date|date("m/d/Y")}}</p>
+        <p>Date de fin : {{tournoi.dateFin | date("m/d/Y")}}</p>
+        <p>Cash price :  {{tournoi.cashPrice}}</p>
+        <p>Age minimum : {{tournoi.ageMin}}</p>
+    </div>
     {% endfor %}
+{{form_start(ajout)}}
+<div class="bg-gray-300 flex flex-col items-center  justify-around ">
+    {{ form_row(ajout.nom) }}
+    {{ form_row(ajout.description) }}
+    {{ form_row(ajout.jeu) }}
+    {{ form_row(ajout.date) }}
+    {{ form_row(ajout.dateFin) }}
+    {{ form_row(ajout.cashPrice) }}
+    {{ form_row(ajout.ageMin) }}
+</div>
 
-    {{form(ajout)}}
+{{ form_end(ajout) }}
 {% endblock %}
  

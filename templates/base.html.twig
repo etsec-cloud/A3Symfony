@@ -3,14 +3,17 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+        <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+        <link href="{{ asset('main.css') }}" rel="stylesheet">
+        {% endblock %}
     </head>
     <body>
-    <nav>
-    <a href="{{path('tournois')}}">Tournois<a/>
-    <a href="{{path('equipe')}}">Equipe<a/>
-    <a href="{{path('joueur')}}">Joueurs<a/>
-    <a href="{{path('admin')}}">Tableau de bord<a/>
+    <nav class="flex justify-around bg-blue-700 text-white">
+        <a href="{{path('tournois')}}">Tournois<a/>
+        <a href="{{path('equipe')}}">Equipe<a/>
+        <a href="{{path('joueur')}}">Joueurs<a/>
+        <a href="{{path('admin')}}">Tableau de bord<a/>
     </nav>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
