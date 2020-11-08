@@ -3,8 +3,9 @@
 {% block title %}Joueur{% endblock %}
 
 {% block body %}
-
-{{equipe.nom}} | {{equipe.slug}} <br>
+<div class="m-5">
+<h1 class="font-bold text-4xl">{{equipe.nom}} <h1>
+<h2 class="my-3">Date de création : {{equipe.dateCreation|date('d/m/Y') }} </h2>
 {{form(modif)}}
-
+</div>
 {% endblock %}

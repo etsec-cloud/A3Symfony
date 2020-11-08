@@ -3,14 +3,14 @@
 {% block title %}Hello TournoisController!{% endblock %}
 {% block body %}
     {% for tournoi in tournois %}
-    <div class="bg-gray-300 flex-coln">
-        <a href="{{path('tournoiShow',{'slug': tournoi.slug}) }}">Nom :{{tournoi.nom}} </a>
-        <p>Description : {{tournoi.description}}</p>
-        <p>Jeu : {{tournoi.jeu}}</p>
-        <p>Date de début : {{tournoi.date|date("m/d/Y")}}</p>
-        <p>Date de fin : {{tournoi.dateFin | date("m/d/Y")}}</p>
-        <p>Cash price :  {{tournoi.cashPrice}}</p>
-        <p>Age minimum : {{tournoi.ageMin}}</p>
+    <div class="p-5 bg-gray-300 flex-coln">
+        <a href="{{path('tournoiShow',{'slug': tournoi.slug}) }}">Nom : {{tournoi.nom}} </a>
+        <p class="my-2">Description : {{tournoi.description}}</p>
+        <p class="my-2">Jeu : {{tournoi.jeu}}</p>
+        <p class="my-2">Date de début : {{tournoi.date|date("m/d/Y")}}</p>
+        <p class="my-2">Date de fin : {{tournoi.dateFin | date("m/d/Y")}}</p>
+        <p class="my-2">Cash price :  {{tournoi.cashPrice}}</p>
+        <p class="my-2">Age minimum : {{tournoi.ageMin}}</p>
     </div>
     {% endfor %}
     {% if is_granted('ROLE_ADMIN') %}

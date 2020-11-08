@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\TournoisRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -44,11 +45,15 @@ class Tournois
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\Positive
+     * @Assert\Type("float")
      */
     private $cashPrice;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Type("integer")
+     * @Assert\Positive
      */
     private $ageMin;
 
