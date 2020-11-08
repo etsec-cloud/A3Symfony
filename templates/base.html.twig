@@ -14,6 +14,11 @@
         <a href="{{path('equipe')}}" class="m-5">Equipe<a/>
         <a href="{{path('joueur')}}" class="m-5">Joueurs<a/>
         <a href="{{path('dashboard')}}" class="m-5">Tableau de bord<a/>
+        {% if app.user %}
+            <a href="{{ path('app_logout') }}" class="m-5">Se deconnecter</a>
+        {% else %}
+            <a href="{{ path('app_login') }}" class="m-5">Se connecter</a>
+        {% endif %}
     </nav>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
