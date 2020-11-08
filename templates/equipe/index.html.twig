@@ -3,15 +3,30 @@
 {% block title %}Equipes{% endblock %}
 
 {% block body %}
-{% for equipe in equipes %}
-<a href="{{path('equipeShow',{'slug': equipe.slug}) }}"> {{equipe.nom}} </a> | <a href="{{path('delete_equipe',{'slug': equipe.slug}) }}"> Supprimer </a>  <br>
+<div class="p-2 bg-gray-300 h-screen">
 
-
-{% endfor %}
-    {{form_start(ajout)}}
-    <div class="border-solid">
-        {{form_row(ajout.nom)}}
+    <div class="p-2 bg-gray-300 ml-32 mt-12">
+        {{form(ajout)}} 
     </div>
-    {{form_end(ajout)}}
     
+    <div class="mt-6">
+        <h1 class="text-6xl font-medium text-center">Liste des equipes</h1>
+        {% for equipe in equipes %}
+        <div class="mt-16 ml-64">
+            <a href="{{path('equipeShow',{'slug': equipe.slug}) }}" class="text-4xl font-medium"> {{equipe.nom}} </a>  {% if is_granted('ROLE_ADMIN') %}|<a href="{{path('delete_equipe',{'slug': equipe.slug}) }}" class="text-2xl text-red-900"> Supprimer </a>  <br>
+        </div>
+        
+        {% endif %}
+    </div>
+    
+    
+    
+
+    
+    {% endfor %}
+    
+    
+    
+</div>
+
 {% endblock %}

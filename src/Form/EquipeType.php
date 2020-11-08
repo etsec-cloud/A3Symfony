@@ -16,19 +16,17 @@ class EquipeType extends AbstractType
         $builder
             ->add('nom',TextType::class, [
                 'attr' => [
-                    'class'=> 'w-1/2 ml-1 rounded-md border-blue-700 border-solid border-2 ',
+                    'class'=> 'w-1/5 ml-1 rounded-md border-blue-700 border-solid border-2 ',
                     ]
             ])
             ->add('Ajouter', SubmitType::class,[
                 'attr' => [
-                    'class'=> 'py-2 px-2 rounded-md bg-blue-700 border-solid border-2 text-white ',
+                    'class'=> 'py-2 px-1 rounded-md bg-blue-700 border-solid border-2 text-white ml-2 mt-3',
                     ]
             ])
         ;
     }
-
      
-
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
