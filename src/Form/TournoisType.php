@@ -6,6 +6,7 @@ use App\Entity\Tournois;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class TournoisType extends AbstractType
 {
@@ -19,6 +20,7 @@ class TournoisType extends AbstractType
             ->add('dateFin')
             ->add('cashPrice')
             ->add('ageMin')
+            ->add('Ajout', SubmitType::class)
         ;
     }
 

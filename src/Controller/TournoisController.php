@@ -34,7 +34,7 @@ class TournoisController extends AbstractController
         }
         $tournoisPlu = $em->getRepository(Tournois::class)->findAll();
 
-        return $this->render('equipe/index.html.twig', [
+        return $this->render('tournois/index.html.twig', [
             'tournois' => $tournoisPlu,
             'ajout'=>$form->createView()
         ]);
@@ -64,7 +64,7 @@ class TournoisController extends AbstractController
                 'success',
                 'tournois modifié');
         } 
-        return $this->render('equipe/equipeShow.html.twig', [
+        return $this->render('tournois/tournoiShow.html.twig', [
             'tournois' => $tournois,
             'modif' => $form->createView()
         ]);
