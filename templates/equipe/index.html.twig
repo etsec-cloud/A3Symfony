@@ -3,27 +3,30 @@
 {% block title %}Equipes{% endblock %}
 
 {% block body %}
-<div class="m-2">
-    <div>
+<div class="p-2 bg-gray-300 h-screen">
+
+    <div class="p-2 bg-gray-300 ml-32 mt-12">
+        {{form(ajout)}} 
+    </div>
+    
+    <div class="mt-6">
+        <h1 class="text-6xl font-medium text-center">Liste des equipes</h1>
         {% for equipe in equipes %}
-        <a href="{{path('equipeShow',{'slug': equipe.slug}) }}" class="text-4xl font-medium"> {{equipe.nom}} </a>  {% if is_granted('ROLE_ADMIN') %}|<a href="{{path('delete_equipe',{'slug': equipe.slug}) }}" class="text-2xl text-red-900"> Supprimer </a>  <br>
+        <div class="mt-16 ml-64">
+            <a href="{{path('equipeShow',{'slug': equipe.slug}) }}" class="text-4xl font-medium"> {{equipe.nom}} </a>  {% if is_granted('ROLE_ADMIN') %}|<a href="{{path('delete_equipe',{'slug': equipe.slug}) }}" class="text-2xl text-red-900"> Supprimer </a>  <br>
+        </div>
+        
         {% endif %}
     </div>
     
+    
+    
 
-
-<<<<<<< HEAD
+    
     {% endfor %}
-        {{form(ajout)}}
+    
+    
+    
 </div>
 
-=======
-{% endfor %}
-    {{form_start(ajout)}}
-    <div class="border-solid">
-        {{form_row(ajout.nom)}}
-    </div>
-    {{form_end(ajout)}}
-    
->>>>>>> 768575775227e153f6d2d80a5939fd26f2c3aa04
 {% endblock %}
