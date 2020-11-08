@@ -2,8 +2,15 @@
 
 {% block title %}Hello TournoisController!{% endblock %}
 {% block body %}
+<div class="bg-gray-300 h-screen">
+    <div class="p-5">
+        {% if is_granted('ROLE_ADMIN') %}
+            {{form(ajout)}}
+        {% endif %}
+    </div>
+    
     {% for tournoi in tournois %}
-    <div class="p-5 bg-gray-300 flex-coln">
+    <div class="p-5 flex-coln">
         <a href="{{path('tournoiShow',{'slug': tournoi.slug}) }}">Nom : {{tournoi.nom}} </a>
         <p class="my-2">Description : {{tournoi.description}}</p>
         <p class="my-2">Jeu : {{tournoi.jeu}}</p>
@@ -13,9 +20,9 @@
         <p class="my-2">Age minimum : {{tournoi.ageMin}}</p>
     </div>
     {% endfor %}
-    {% if is_granted('ROLE_ADMIN') %}
-        {{form(ajout)}}
-    {% endif %}
+    
+</div>
+    
     
 {% endblock %}
  
