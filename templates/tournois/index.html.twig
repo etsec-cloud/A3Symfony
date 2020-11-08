@@ -14,6 +14,9 @@
     <br>
     {% endfor %}
 
-    {{form(ajout)}}
+    {% if is_granted('ROLE_ADMIN') %}
+        {{form(ajout)}}
+    {% endif %}
+    
 {% endblock %}
  
