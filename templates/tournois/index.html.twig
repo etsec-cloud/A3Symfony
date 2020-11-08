@@ -4,13 +4,14 @@
 
 {% block body %}
     {% for tournoi in tournois %}
-    {{tournoi.nom}}
+    <a href="{{path('tournoiShow',{'slug': tournoi.slug}) }}">{{tournoi.nom}} </a>
     {{tournoi.description}}
     {{tournoi.jeu}}
     {{tournoi.date|date("m/d/Y")}}
     {{tournoi.dateFin | date("m/d/Y")}}
     {{tournoi.cashPrice}}
     {{tournoi.ageMin}}
+    <br>
     {% endfor %}
 
     {{form(ajout)}}

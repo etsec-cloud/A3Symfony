@@ -40,7 +40,7 @@ class TournoisController extends AbstractController
         ]);
     }
     /**
-     * @Route("/{slug}", name="equipeShow")
+     * @Route("/{slug}", name="tournoiShow")
      */
     public function equipeShow(Tournois $tournois= null, Request $request)
     {

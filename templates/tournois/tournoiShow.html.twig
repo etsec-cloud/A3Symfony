@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{tournois.nom}}{% endblock %}
+
+{% block body %}
+
+{{tournois.nom}} | {{tournois.slug}} <br>
+{{form(modif)}}
+
+{% endblock %}
