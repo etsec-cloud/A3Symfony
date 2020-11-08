@@ -7,15 +7,22 @@
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
     {% endfor %}
 
-    <h1>Register</h1>
+    <div class="flex justify-center items-around w-screen">
+        <div class="shadow bg-gray-300 p-5 flex rounded-md justify-around h-64 flex-col mt-40">
+            <h1 class="text-center text-xl font-bold">Register</h1>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+            {{ form_start(registrationForm) }}
+            {{ form_row(registrationForm.email) }}
+            {{ form_row(registrationForm.plainPassword, {
+                label: 'Password'
+            }) }}
+            {{ form_row(registrationForm.agreeTerms) }}
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+            <button type="submit" class="py-2 px-2 rounded-md bg-blue-700 border-solid border-2 text-white">Register</button>
+            {{ form_end(registrationForm) }}
+        </div>
+        
+    </div>
+
+    
 {% endblock %}
