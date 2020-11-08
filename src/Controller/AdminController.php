@@ -11,11 +11,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AdminController extends AbstractController
 /**
-* @Route("/admin")
+* @Route("/dashboard")
 */
 {
     /**
-     * @Route("/", name="admin")
+     * @Route("/", name="dashboard")
      */
     public function index(): Response
     {

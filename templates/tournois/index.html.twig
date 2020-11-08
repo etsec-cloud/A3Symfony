@@ -24,6 +24,13 @@
     {{ form_row(ajout.ageMin) }}
 </div>
 
+<<<<<<< HEAD
 {{ form_end(ajout) }}
+=======
+    {% if is_granted('ROLE_ADMIN') %}
+        {{form(ajout)}}
+    {% endif %}
+    
+>>>>>>> 90a950fe172a7867a0b1de7aa4b55ed6fc355746
 {% endblock %}
  
