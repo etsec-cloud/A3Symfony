@@ -21,7 +21,7 @@ class EquipeType extends AbstractType
             ])
             ->add('Ajouter', SubmitType::class,[
                 'attr' => [
-                    'class'=> 'py-2 px-1 rounded-md bg-blue-700 border-solid border-2 text-white ',
+                    'class'=> 'py-2 px-2 rounded-md bg-blue-700 border-solid border-2 text-white ',
                     ]
             ])
         ;
