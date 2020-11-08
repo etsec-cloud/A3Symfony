@@ -3,35 +3,39 @@
 {% block title %}Hello AdminController!{% endblock %}
 
 {% block body %}
-<h1 class="ml-10 text-5xl font-bold">Bienvenue {{ app.user }}</h1>
+<div class="bg-gray-300 h-screen">
+    <h1 class="ml-10 text-5xl font-bold">Bienvenue</h1>
 
-<div class="ml-20">
-    <h2 class="text-xl" >Tableau de bord</h2>
-    <div class="flex justify-around mt-10">
-    <div>
-    <h3 class="mb-5">Liste des equipes</h3>
-        <p>Il y a pour le moment {{equipes | length }} equipes sur le site</p>
-        {% for equipe in equipes %}
-        <a  class="italic" href="{{path('equipeShow',{'slug': equipe.slug}) }}"> {{equipe.nom}} </a></br>
-        {% endfor %}
-    </div>
+    <div class="ml-20">
+        <h2 class="text-xl" >Tableau de bord</h2>
+        <div class="flex justify-around mt-10">
+            <div>
+                <h3 class="mb-5">Liste des equipes</h3>
+                    <p>Il y a pour le moment {{equipes | length }} equipes sur le site</p>
+                    {% for equipe in equipes %}
+                    <li class="list-none my-1"><a  class="italic" href="{{path('equipeShow',{'slug': equipe.slug}) }}"> {{equipe.nom}} </a></li>
+                    {% endfor %}
+            </div>
 
-    <div>
-        <h3 class="mb-5" >Liste des joueurs</h3>
-        <p>Il y a pour le moment {{joueurs | length }} joueurs sur le site</p>
-        {% for joueurs in joueurs %}
-        <a  href="{{path('show',{'slug': joueurs.slug}) }}"> {{joueurs.pseudo}} </a> </br>
-        {% endfor %}
-    </div>
+            <div>
+                <h3 class="mb-5" >Liste des joueurs</h3>
+                <p>Il y a pour le moment {{joueurs | length }} joueurs sur le site</p>
+                {% for joueurs in joueurs %}
+                <li class="list-none my-1"><a  href="{{path('show',{'slug': joueurs.slug}) }}"> {{joueurs.pseudo}} </a> </li>
+                {% endfor %}
+            </div>
 
-    <div>
-        <h3 class="mb-5" >Liste des tournois</h3>
-        <p>Il y a pour le moment {{tournois | length }} tournois sur le site</p>
-        {% for tournois in tournois %}
-        <a class="italic" href="{{path('tournoiShow',{'slug': tournois.slug}) }}">{{tournois.nom}} </a></br>
-        {% endfor %}
+            <div>
+                <h3 class="mb-5" >Liste des tournois</h3>
+                <p>Il y a pour le moment {{tournois | length }} tournois sur le site</p>
+                {% for tournois in tournois %}
+                <li class="list-none my-1"><a class="italic" href="{{path('tournoiShow',{'slug': tournois.slug}) }}">{{tournois.nom}} </a></li>
+                {% endfor %}
+            </div>
+        </div>    
+            
     </div>
-        
 </div>
+
 
 {% endblock %}
