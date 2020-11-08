@@ -8,5 +8,10 @@
 
 
 {% endfor %}
-    {{form(ajout)}}
+    {{form_start(ajout)}}
+    <div class="border-solid">
+        {{form_row(ajout.nom)}}
+    </div>
+    {{form_end(ajout)}}
+    
 {% endblock %}

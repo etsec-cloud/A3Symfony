@@ -20,7 +20,7 @@
         <h3 class="mb-5" >Liste des joueurs</h3>
         <p>Il y a pour le moment {{joueurs | length }} joueurs sur le site</p>
         {% for joueurs in joueurs %}
-        <a  href="{{path('show',{'slug': joueurs.slug}) }}"> {{joueurs.pseudo}} </a> 
+        <a  href="{{path('show',{'slug': joueurs.slug}) }}"> {{joueurs.pseudo}} </a> </br>
         {% endfor %}
     </div>
 
@@ -28,7 +28,7 @@
         <h3 class="mb-5" >Liste des tournois</h3>
         <p>Il y a pour le moment {{tournois | length }} tournois sur le site</p>
         {% for tournois in tournois %}
-        <a class="italic" href="{{path('tournoiShow',{'slug': tournois.slug}) }}">{{tournois.nom}} </a>
+        <a class="italic" href="{{path('tournoiShow',{'slug': tournois.slug}) }}">{{tournois.nom}} </a></br>
         {% endfor %}
     </div>
         
