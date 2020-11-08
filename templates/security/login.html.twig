@@ -9,6 +9,7 @@
     {% endif %}
 
 <div class="flex justify-center items-around w-screen">
+<<<<<<< HEAD
 
 <div class="shadow mt-40 bg-gray-100 p-5 flex rounded-md justify-around h-64 flex-col ">
     <div class="flex justify-between">
@@ -29,19 +30,30 @@
     {#
         Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
         See https://symfony.com/doc/current/security/remember_me.html
-
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
+=======
+    <div class="shadow bg-gray-300 p-5 flex rounded-md justify-around h-64 flex-col mt-40">
+        <div class="flex justify-between">
+            <label for="inputEmail">Email</label>
+            <input type="email" class="ml-1 rounded-md border-blue-700 border-solid border-2"value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
         </div>
-    #}
-    
+>>>>>>> 41a3ac6f808c750257094da0640bdd05b3bed447
 
-    <button class="py-2 px-2 rounded-md bg-blue-700 border-solid border-2 text-white" type="submit">
-        Sign in
-    </button>
+        <div class="flex justify-between">
+            <label for="inputPassword">Password</label>
+            <input class="ml-1 rounded-md border-blue-700 border-solid border-2" type="password" name="password" id="inputPassword" class="form-control" required>
+        </div>
+
+        <input type="hidden" name="_csrf_token"
+            value="{{ csrf_token('authenticate') }}"
+        >
+        
+
+        <button class="py-2 px-2 rounded-md bg-blue-700 border-solid border-2 text-white" type="submit">
+            Sign in
+        </button>
+        <p>Pas de compte ? <a href="{{path('app_register')}}">Inscrivez-vous ici</a>
     </div>
-</form>
 </div>
+</form>
+
 {% endblock %}
