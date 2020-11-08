@@ -3,9 +3,22 @@
 {% block title %}Hello AdminController!{% endblock %}
 
 {% block body %}
-     <h1>Bienvenue {{ app.user.email }}</h1>
+    <h1>Bienvenue {{ app.user.email }}</h1>
 
-    {% if is_granted('ROLE_ADMIN') %}
-        <p>vous etes admin<p>
-    {% endif %}
+    <h2>Tableau de bord</h2>
+    <h3>Liste des equipes</h3>
+    <p>Il y a pour le moment {{equipes | length }} equipes sur le site</p>
+    {% for equipe in equipes %}
+    <p>{{equipe.nom}}</p>
+    {% endfor %}
+    <h3>Liste des joueurs</h3>
+    <p>Il y a pour le moment {{joueurs | length }} joueurs sur le site</p>
+    {% for joueurs in joueurs %}
+    <p>{{joueurs.pseudo}}</p>
+    {% endfor %}
+    <h3>Liste des tournois</h3>
+    <p>Il y a pour le moment {{tournois | length }} tournois sur le site</p>
+    {% for tournois in tournois %}
+    <p>{{tournois.nom}}</p>
+    {% endfor %}
 {% endblock %}

@@ -10,9 +10,7 @@
     <a href="{{path('tournois')}}">Tournois<a/>
     <a href="{{path('equipe')}}">Equipe<a/>
     <a href="{{path('joueur')}}">Joueurs<a/>
-    {% if is_granted('ROLE_ADMIN') %}
-        <a href="{{path('admin')}}">Tableau de bord<a/>
-    {% endif %}
+    <a href="{{path('admin')}}">Tableau de bord<a/>
     </nav>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
