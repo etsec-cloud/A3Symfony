@@ -9,19 +9,11 @@
         {% endblock %}
     </head>
     <body>
-<<<<<<< HEAD
     <nav class="flex justify-around bg-blue-700 text-white">
         <a href="{{path('tournois')}}">Tournois<a/>
         <a href="{{path('equipe')}}">Equipe<a/>
         <a href="{{path('joueur')}}">Joueurs<a/>
-        <a href="{{path('admin')}}">Tableau de bord<a/>
-=======
-    <nav>
-    <a href="{{path('tournois')}}">Tournois<a/>
-    <a href="{{path('equipe')}}">Equipe<a/>
-    <a href="{{path('joueur')}}">Joueurs<a/>
-    <a href="{{path('dashboard')}}">Tableau de bord<a/>
->>>>>>> 90a950fe172a7867a0b1de7aa4b55ed6fc355746
+        <a href="{{path('dashboard')}}">Tableau de bord<a/>
     </nav>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}

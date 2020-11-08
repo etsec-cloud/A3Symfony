@@ -13,24 +13,9 @@
         <p>Age minimum : {{tournoi.ageMin}}</p>
     </div>
     {% endfor %}
-{{form_start(ajout)}}
-<div class="bg-gray-300 flex flex-col items-center  justify-around ">
-    {{ form_row(ajout.nom) }}
-    {{ form_row(ajout.description) }}
-    {{ form_row(ajout.jeu) }}
-    {{ form_row(ajout.date) }}
-    {{ form_row(ajout.dateFin) }}
-    {{ form_row(ajout.cashPrice) }}
-    {{ form_row(ajout.ageMin) }}
-</div>
-
-<<<<<<< HEAD
-{{ form_end(ajout) }}
-=======
     {% if is_granted('ROLE_ADMIN') %}
         {{form(ajout)}}
     {% endif %}
     
->>>>>>> 90a950fe172a7867a0b1de7aa4b55ed6fc355746
 {% endblock %}
  
